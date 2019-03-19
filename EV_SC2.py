@@ -20,8 +20,8 @@ ALL_POSSIBLE_ACTIONS = ['C', 'D', 'S']
 battery_states = [0, 0.1, 0.2, 0.3, 0.4, 0.5,
                     0.6, 0.7, 0.8, 0.9, 1]
 
-GAMMA = 0.9 #0.9  2000 interation works
-ALPHA = 0.99 #0.5
+GAMMA = 0.9 
+ALPHA = 0.99 
 
 def max_dict(d):  #d =  {'U': -10.0, 'D': 0, 'L': 0, 'R': 0}
   # returns the argmax (key) and max (value) from a dictionary
@@ -62,10 +62,6 @@ if __name__ == '__main__':
         else:
             elec_price[s[0]] = -0.1
   
-    
-   
-     #{0: {'C': 0, 'D': 0}, 1: {'C': 0, 'D': 0}, 2: {'C': 0, 'D': 0}}
-    
     Q = {}
     for i in states:
         Q[i] = {}
@@ -85,9 +81,6 @@ if __name__ == '__main__':
             tracker_action[k][a] = 0
             
     t = 1.0
-    #tracker = {} #check how many times each state is visited
-    #for i in ev.actions.keys():
-        #tracker[i] = 0
     deltas = []
     cost_dict = {}
     exploring_list = []
