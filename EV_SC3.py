@@ -82,9 +82,6 @@ if __name__ == '__main__':
             tracker_action[k][a] = 0
             
     t = 1.0
-    #tracker = {} #check how many times each state is visited
-    #for i in ev.actions.keys():
-        #tracker[i] = 0
     deltas = []
     cost_dict = {}
     exploring_list = []
