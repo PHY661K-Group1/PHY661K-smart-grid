@@ -71,14 +71,14 @@ if __name__ == '__main__':
     
     update_counts = {}  #for debugging  
     update_counts_sa = {}   #for adaptive learning rate
-    tracker_action = {} #check how many time each state is visited
+
     
     for k in states:     #{0: {'C': 1.005, 'D': 1.0},1: {'C': 1.005, 'D': 1.0}}
         update_counts_sa[k] = {}
-        tracker_action[k] = {}
+   
         for a in ALL_POSSIBLE_ACTIONS:
             update_counts_sa[k][a] = 1.0
-            tracker_action[k][a] = 0
+      
             
     t = 1.0
     deltas = []
@@ -104,16 +104,15 @@ if __name__ == '__main__':
  
             if day == 9999:
                 a, _ = max_dict(Q[s])
+                r = ev.charge_SC2(a, elec_price[s[0]]) 
                 ev.last_policy[(ev.day_time, ev.battery_level)] = a
                 cost_last_day = ev.cost_per_day
                 #print('espilon:',0.9/t)
 
             else: 
                 a = random_action(a, ev.actions[s],eps=0.99/t)
+                r = ev.charge_SC2(a, elec_price[s[0]]) 
             
-            r = ev.charge_SC2(a, elec_price[s[0]]) 
-            tracker_action[s][a] +=1 
-            #tracker[(ev.day_time, ev.battery_level)] += 1
             
             s2 = ev.new_current_state()
             
